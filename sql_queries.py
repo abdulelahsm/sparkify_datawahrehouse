@@ -18,7 +18,7 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 # CREATE TABLES
 staging_events_table_create= ("""
         CREATE TABLE IF NOT EXISTS staging_events(
-        userId              INTEGER 
+        userId              INTEGER, 
         artist              VARCHAR,
         auth                VARCHAR,
         firstName           VARCHAR,
@@ -41,79 +41,80 @@ staging_events_table_create= ("""
 staging_songs_table_create = ("""
         CREATE TABLE IF NOT EXISTS staging_songs
 (
-        artist_id                VARCHAR
-        ,artist_latitude          FLOAT
-        ,artist_longitude         FLOAT
-        ,artist_location          VARCHAR
-        ,artist_name              VARCHAR
-        ,song_id                  VARCHAR
-        ,num_songs                INTEGER
-        ,title                    VARCHAR
-        ,duration                 FLOAT
-        ,year                     INTEGER
+        artist_id                VARCHAR,
+        artist_latitude          FLOAT,
+        artist_longitude         FLOAT,
+        artist_location          VARCHAR,
+        artist_name              VARCHAR,
+        song_id                  VARCHAR,
+        num_songs                INTEGER,
+        title                    VARCHAR,
+        duration                 FLOAT,
+        year                     INTEGER
 )
 """)
 
 songplay_table_create = ("""
 CREATE TABLE IF NOT EXISTS songplays
         (
-        songplay_id INTEGER IDENTITY(0,1) PRIMARY KEY
-        ,start_time    TIMESTAMP NOT NULL sortkey
-        ,user_id VARCHAR NOT NULL
-        ,level VARCHAR
-        ,song_id VARCHAR 
-        ,artist_id VARCHAR
-        ,session_id INTEGER
-        ,location VARCHAR
-        ,user_agent TEXT
+        songplay_id     INTEGER         IDENTITY(0,1)   PRIMARY KEY,
+        start_time      TIMESTAMP       NOT NULL        SORTKEY DISTKEY,
+        user_id         VARCHAR         NOT NULL,
+        level           VARCHAR,
+        song_id         VARCHAR, 
+        artist_id       VARCHAR,
+        session_id      INTEGER,
+        location        VARCHAR,
+        user_agent      TEXT
         );
 """)
 
 user_table_create = ("""
 CREATE TABLE IF NOT EXISTS users 
     (
-    user_id VARCHAR PRIMARY KEY
-    ,title VARCHAR
-    ,artist_id VARCHAR
-    ,year INT
-    ,DURATION FLOAT
+    user_id     VARCHAR         PRIMARY KEY,
+    title       VARCHAR,
+    artist_id   VARCHAR,
+    year        INTEGER,
+    DURATION    FLOAT
     );
 """)
 
 song_table_create = ("""
 CREATE TABLE IF NOT EXISTS songs
     (
-     song_id VARCHAR PRIMARY KEY 
-    ,name VARCHAR
-    ,title VARCHAR
-    ,artist_id VARCHAR
-    ,year INTEGER
-    ,duration FLOAT
+    song_id     VARCHAR         PRIMARY KEY, 
+    name        VARCHAR,
+    title       VARCHAR,
+    artist_id   VARCHAR,
+    year        INTEGER,
+    duration    FLOAT
     );
 """)
 
 artist_table_create = ("""
 CREATE TABLE IF NOT EXISTS artists 
     (
-    artist_id VARCHAR PRIMARY KEY  
-    ,name VARCHAR
-    ,location VARCHAR
-    ,latitude FLOAT
-    ,longitude FLOAT 
+    artist_id   VARCHAR PRIMARY KEY,  
+    name        VARCHAR,
+    location    VARCHAR,
+    latitude    FLOAT,
+    longitude   FLOAT 
     );
 """)
 
 time_table_create = ("""
 CREATE TABLE IF NOT EXISTS time 
 (
-    start_time TIMESTAMP PRIMARY KEY SORTKEY 
-    ,name VARCHAR(255),
-    hour INTEGER,
-    day INTEGER,
-    week INTEGER,
-    month TEXT,
-    YEAR INTEGER,
-    weekday TEXT);
+    start_time TIMESTAMP        PRIMARY KEY     SORTKEY,
+    name        VARCHAR(255),
+    hour        INTEGER,
+    day         INTEGER,
+    week        INTEGER,
+    month       TEXT,
+    YEAR        INTEGER,
+    weekday     TEXT
+    );
 """)
 
 # STAGING TABLES
